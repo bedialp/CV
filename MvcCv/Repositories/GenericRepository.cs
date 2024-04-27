@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace MvcCv.Repositories
@@ -15,7 +16,7 @@ namespace MvcCv.Repositories
             return db.Set<T>().ToList();
         }
 
-        public void Add(T p)
+        public void TAdd(T p)
         {
             db.Set<T>().Add(p);
             db.SaveChanges();
@@ -34,7 +35,12 @@ namespace MvcCv.Repositories
 
         public void TUpdate(T p)
         {
-            db.SaveChanges(); 
+            db.SaveChanges();
+        }
+
+        public T Find(Expression<Func<T, bool>> where)
+        {
+            return db.Set<T>().FirstOrDefault(where);
         }
     }
 }
