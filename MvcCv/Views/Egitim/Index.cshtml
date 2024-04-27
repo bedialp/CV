@@ -1,0 +1,42 @@
+﻿@model List<MvcCv.Models.Entity.TblEgitimlerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<br />
+<h3 style="text-align: center; font-weight: bold;">Egitim Listesi Admin Sayfasi</h3>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 3%">#</th>
+            <th>Baslik</th>
+            <th>Alt Baslik</th>
+            <th>2. Alt Baslik</th>
+            <th>GNO</th>
+            <th>Tarih</th>
+            <th>Guncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Baslik</td>
+                <td>@item.AltBaslik1</td>
+                <td>@item.AltBaslik2</td>
+                <td>@item.GNO</td>
+                <td>@item.Tarih</td>
+                <td style="width: 9%"><a href="/Egitim/EgitimGuncelle/@item.ID" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i>Guncelle</a></td>
+                <td style="width: 6%"><a href="/Egitim/EgitimSil/@item.ID" class="btn btn-outline-danger"><i class="fas fa-trash"></i>Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Egitim/EgitimEkle/" class="btn btn-success">Yeni Egitim Ekle</a>

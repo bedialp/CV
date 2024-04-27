@@ -1,0 +1,30 @@
+﻿﻿@model MvcCv.Models.Entity.TblEgitimlerim
+
+@{
+    ViewBag.Title = "EgitimGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3 style="text-align: center; font-weight: bold;">Egitim Guncelleme Paneli</h3>
+<br />
+
+<form method="post">
+
+    @Html.Label("Baslik")
+    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alt Baslik")
+    @Html.TextBoxFor(x => x.AltBaslik1, new { @class = "form-control" })
+    <br />
+    @Html.Label("2. Alt Baslik")
+    @Html.TextBoxFor(x => x.AltBaslik2, new { @class = "form-control" })
+    <br />
+    @Html.Label("Genel Not Ortalamasi")
+    @Html.TextBoxFor(x => x.GNO, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-success btn-block mb-4"> Guncelle</button>
+</form>

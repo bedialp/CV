@@ -1,0 +1,34 @@
+﻿﻿@model MvcCv.Models.Entity.TblEgitimlerim
+
+@{
+    ViewBag.Title = "EgitimEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2 style="text-align: center; font-weight: bold;">Yeni Egitim Bilgisi Ekleme Sayfasi</h2>
+<br />
+<form method="post">
+
+    @Html.Label("Baslik")
+    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", placeholder = "Bolum veya meslek giriniz" })
+    @Html.ValidationMessageFor(x => x.Baslik, "", new { @style = "color: red" })
+    <br />
+    @Html.Label("Alt Baslik")
+    @Html.TextBoxFor(x => x.AltBaslik1, new { @class = "form-control", placeholder = "Okul veya kurum bilgisini giriniz" })
+    @Html.ValidationMessageFor(x => x.AltBaslik1, "", new { @style = "color: red" })
+    <br />
+    @Html.Label("2. Alt Baslik")
+    @Html.TextBoxFor(x => x.AltBaslik2, new { @class = "form-control", placeholder = "Konum bilgisini giriniz" })
+    @Html.ValidationMessageFor(x => x.AltBaslik2, "", new { @style = "color: red" })
+    <br />
+    @Html.Label("Genel Not Ortalamasi")
+    @Html.TextBoxFor(x => x.GNO, new { @class = "form-control", placeholder = "Genel Not Ortalamasi bilgisini giriniz" })
+    @Html.ValidationMessageFor(x => x.GNO, "", new { @style = "color: blue" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", placeholder = "Başlangıç ve bitiş tarihlerini aa.yyyy formatında giriniz" })
+    @Html.ValidationMessageFor(x => x.Tarih, "", new { @style = "color: red" })
+    <br />
+    <button class="btn btn-success">Yeni Egitim Bilgisi Kaydet</button>
+
+</form>
