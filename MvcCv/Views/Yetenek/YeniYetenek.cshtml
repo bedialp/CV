@@ -1,0 +1,18 @@
+﻿@model MvcCv.Models.Entity.TblYeteneklerim
+@{
+    ViewBag.Title = "YetenekEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3 style="text-align: center; font-weight: bold;">Yeni Yetenek Ekleme Sayfasi</h3>
+<br />
+<form method="post" class="form-group">
+
+    @Html.Label("Teknoloji Adi")
+    @Html.TextBoxFor(x => x.Yetenek, new { @class = "form-control", @placeholder = "Teknoloji adini giriniz" })
+    <br />
+    @Html.Label("Yetenek Basari Orani")
+    @Html.TextBoxFor(x => x.Oran, new { @class = "form-control", @placeholder = "0 - 100 arasinda bir deger giriniz" })
+    <br />
+    <button class="btn btn-success">Yeni Yetenek Kaydet</button>
+</form>

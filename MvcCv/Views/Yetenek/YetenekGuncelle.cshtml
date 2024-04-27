@@ -1,0 +1,22 @@
+﻿﻿@model MvcCv.Models.Entity.TblYeteneklerim
+
+@{
+    ViewBag.Title = "YetenekGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h3 style="text-align: center; font-weight: bold;">Yetenek Guncelleme Sayfasi</h3>
+<br />
+
+<form method="post">
+
+    @Html.Label("Teknoloji Adı")
+    @Html.TextBoxFor(y => y.Yetenek, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yetenek Basari Orani")
+    @Html.TextBoxFor(y => y.Oran, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-success">Guncelle</button>
+</form>

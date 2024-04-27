@@ -1,0 +1,64 @@
+﻿@model List<MvcCv.Models.Entity.TblYeteneklerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+    string renk = "";
+    string labelrenk = "";
+}
+<br />
+<h3 style="text-align: center; font-weight: bold;">Yetenek Listesi Admin Sayfasi</h3>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Teknoloji</th>
+            <th>Derece</th>
+            <th>Oran</th>
+            <th>Duzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            if (item.Oran >= 0 && item.Oran <= 25)
+            {
+                renk = "progress-bar bg-danger";
+                labelrenk = "badge bg-danger";
+            }
+            if (item.Oran >= 26 && item.Oran <= 50)
+            {
+                renk = "progress-bar bg-warning";
+                labelrenk = "badge bg-warning";
+            }
+            if (item.Oran >= 51 && item.Oran <= 75)
+            {
+                renk = "progress-bar bg-primary";
+                labelrenk = "badge bg-primary";
+            }
+            if (item.Oran >= 76 && item.Oran <= 100)
+            {
+                renk = "progress-bar bg-success";
+                labelrenk = "badge bg-success";
+            }
+            <tr>
+                <td style="width:3%">@count</td>
+                <td>@item.Yetenek</td>
+                <td style="width: 33%">
+                    <div class="progress progress-sm">
+                        <div class="@renk" style="width: @item.Oran%"></div>
+                    </div>
+                </td>
+                <td style="width: 5%"><span class="@labelrenk">@item.Oran%</span></td>
+                <td style="width: 10%"><a href="/Yetenek/YetenekGuncelle/@item.ID" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i>Guncelle</a></td>
+
+                <td style="width: 7%"><a href="/Yetenek/YetenekSil/@item.ID" class="btn btn-outline-danger"><i class="fas fa-trash"></i>Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Yetenek/YeniYetenek/" class="btn btn-success">Yeni Yetenek Ekle</a>
