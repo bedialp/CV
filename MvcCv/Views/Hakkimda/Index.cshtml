@@ -1,25 +1,37 @@
-﻿@model List<MvcCv.Models.Entity.TblHakkimda>
+﻿
+@using MvcCv.Models.Entity
+@model List<TblHakkimda>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<br />
+<h3 style="text-align: center; font-weight: bold;">Hakkimda Sayfasi</h3>
 
-<h3>Hakkimda Menusu</h3>
-
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Ad</th>
-            <th>Soyad</th>
-            <th>Adres</th>
-            <th>Telefon</th>
-            <th>Mail</th>
-            <th>Hakkımda Açıklama</th>
-            <th>Fotoğraf</th>
-            <th>İşlemler</th>
-        </tr>
-    </thead>
-    <tbody>
-       
-    </tbody>
-</table>
+<form method="post">
+    @foreach (var x in Model)
+    {
+        @Html.Label("Ad")
+        <input type="text" name="Ad" value="@x.Ad" class="form-control" />
+        <br />
+        @Html.Label("Soyad")
+        <input type="text" name="Soyad" value="@x.Soyad" class="form-control" />
+        <br />
+        @Html.Label("Adres")
+        <input type="text" name="Adres" value="@x.Adres" class="form-control" />
+        <br />
+        @Html.Label("Telefon")
+        <input type="text" name="Telefon" value="@x.Telefon" class="form-control" />
+        <br />
+        @Html.Label("Mail Adresi")
+        <input type="text" name="Mail" value="@x.Mail" class="form-control" />
+        <br />
+        @Html.Label("Resim")
+        <input type="text" name="Resim" value="@x.Resim" class="form-control" />
+        <br />
+        @Html.Label("Aciklama")
+        <textarea rows="5" class="form-control" name="Aciklama">@x.Aciklama </textarea>
+    }
+    <br />
+    <button class="btn btn-outline-success"><i class="fas fa-save"></i> Kaydet</button>
+</form>
