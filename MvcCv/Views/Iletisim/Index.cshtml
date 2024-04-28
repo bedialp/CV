@@ -1,0 +1,53 @@
+﻿@model List<MvcCv.Models.Entity.TblIletisim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<br />
+<h3 style="text-align: center; font-weight: bold;">Iletisim  Sayfasi</h3>
+
+<div class="tab-pane" id="timeline">
+    <div class="timeline timeline-inverse">
+        @foreach (var x in Model)
+        {
+            count++;
+            if (count % 2 == 1)
+
+            {
+                <div class="time-label">
+                    <span class="bg-dark">@(((DateTime)x.Tarih).ToString("dd.MMM.yyyy"))</span>
+                </div>
+            }
+            else
+            {
+                <div class="time-label">
+                    <span class="bg-cyan">@(((DateTime)x.Tarih).ToString("dd.MMM.yyyy"))</span>
+                </div>
+            }
+            <div>
+                <i class="fas fa-comments bg-yellow"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fas fa-user-clock"> @x.Mail </i></span>
+                    <h3 style="color:royalblue ; font-weight:bold;" class="timeline-header"> @x.AdSoyad </h3>
+                    <h3 class="timeline-header"> @x.Konu</h3>
+                    <div class="timeline-body">@x.Mesaj</div>
+                    <div class="timeline-footer">
+                        <div>
+                            @{ if (x.Status == true)
+                                {
+                                    <a href="/Iletisim/MakePassive/@x.ID" class="btn btn-outline-info btn-sm"><i class="fas fa-check"></i></a>
+                                }
+                                else
+                                {
+                                    <a href="/Iletisim/MakeActive/@x.ID" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye-slash"></i></a>
+                                }
+                            }
+                            <a href="/Iletisim/IletisimSil/@x.ID" class="btn btn-outline-danger btn-sm  float-right "><i class="fas fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
