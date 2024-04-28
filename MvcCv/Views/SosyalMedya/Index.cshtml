@@ -1,0 +1,76 @@
+﻿@model List<MvcCv.Models.Entity.TblSosyalMedya>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<br />
+<h3 style="text-align: center; font-weight: bold;"> Sosyal Medya Sayfasi</h3>
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Sosyal Medya Link</th> 
+            <th>Icon</th>
+            <th>Durum</th>
+            <th>Guncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            count++;
+            <tr>
+                <td style="width:3%;">@count</td>
+                <td style="width:40%;">@x.Link</td>
+                <td>@x.Ikon</td>
+                <td style="width:8%;">
+                    @{
+                        if (x.Status == true)
+                        {
+                            <a href="/SosyalMedya/MakePassive/@x.ID" class="btn btn-outline-primary"><i class="fas fa-check"></i> Aktif</a>
+                        }
+                        else
+                        {
+                            <a href="/SosyalMedya/MakeActive/@x.ID" class="btn btn-outline-warning"><i class="fas fa-eye-slash"></i> Pasif</a>
+                        }
+                    }
+                </td>
+
+                <td style="width:10%;"><a href="/SosyalMedya/SosyalMedyaGuncelle/@x.ID" class="btn btn-outline-info "><i class="fas fa-pencil-alt"></i> Guncelle</a></td>
+
+                <td style="width:7%;"><a href="/SosyalMedya/SosyalMedyaSil/@x.ID" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<button class="btn btn-outline-success" data-toggle="modal" data-target="#Modal1"><i class="fas fa-plus"></i> Yeni Sosyal Medya Hesabi Ekle</button>
+
+<!-- YENI SOSYAL MEDYA EKLEME POP-UP -->
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"> Sosyal Medya Bilgisi Ekle</h2>
+                <br />
+            </div>
+            <form method="post" action="/SosyalMedya/SosyalMedyaEkle/">
+                <div class="modal-body">
+                    <label>Sosyal Medya Link</label>
+                    <input type="text" name="Link" class="form-control" required />
+                    <br />
+                    <label>Icon</label>
+                    <input type="text" name="Ikon" class="form-control" required />
+                </div>
+                <button class="btn btn-outline-success m-3"><i class="fas fa-save"></i> Kaydet</button>
+                <a href="/SosyalMedya/Index/" class="btn btn-outline-danger"><i class="fas fa-times "></i> Iptal Et</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.YENI SOSYAL MEDYA EKLEME POP-UP -->

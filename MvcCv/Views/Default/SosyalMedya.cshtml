@@ -1,0 +1,11 @@
+﻿@model List<MvcCv.Models.Entity.TblSosyalMedya>
+
+<div class="social-icons">
+    @foreach (var x in Model)
+    {
+        if (x.Status == true)
+        {
+            <a class="social-icon" href="@x.Link"><i class="@x.Ikon"></i></a>
+        }
+    }
+</div>
