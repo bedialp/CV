@@ -16,5 +16,9 @@ namespace MvcCv.Models.Entity
     {
         public int ID { get; set; }
         public string Aciklama { get; set; }
+        public string Kurs { get; set; }
+        public string SertifikaURL { get; set; }
+        public string Tarih { get; set; }
+        public string KursDetay { get; set; }
     }
 }

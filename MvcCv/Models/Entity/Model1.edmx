@@ -65,13 +65,28 @@
           <Property Name="Konu" Type="nvarchar(max)" />
           <Property Name="Mesaj" Type="nvarchar(max)" />
           <Property Name="Tarih" Type="date" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="TblSertifikalarim">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Aciklama" Type="varchar" MaxLength="250" />
+          <Property Name="Kurs" Type="nvarchar(max)" />
+          <Property Name="KursDetay" Type="nvarchar(max)" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="SertifikaURL" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblSosyalMedya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Link" Type="nvarchar(max)" />
+          <Property Name="Ikon" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="TblYeteneklerim">
           <Key>
@@ -89,6 +104,7 @@
           <EntitySet Name="TblHobilerim" EntityType="Self.TblHobilerim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblIletisim" EntityType="Self.TblIletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSertifikalarim" EntityType="Self.TblSertifikalarim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSosyalMedya" EntityType="Self.TblSosyalMedya" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblYeteneklerim" EntityType="Self.TblYeteneklerim" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -150,7 +166,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kurs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SertifikaURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KursDetay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TblYeteneklerim">
           <Key>
@@ -169,6 +189,7 @@
           <EntitySet Name="TblSertifikalarim" EntityType="Self.TblSertifikalarim" />
           <EntitySet Name="TblYeteneklerim" EntityType="Self.TblYeteneklerim" />
           <EntitySet Name="TblIletisim" EntityType="DbCvModel.TblIletisim" />
+          <EntitySet Name="TblSosyalMedya" EntityType="DbCvModel.TblSosyalMedya" />
         </EntityContainer>
         <EntityType Name="TblIletisim">
           <Key>
@@ -180,6 +201,17 @@
           <Property Name="Konu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TblSosyalMedya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ikon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -245,6 +277,10 @@
           <EntitySetMapping Name="TblSertifikalarim">
             <EntityTypeMapping TypeName="DbCvModel.TblSertifikalarim">
               <MappingFragment StoreEntitySet="TblSertifikalarim">
+                <ScalarProperty Name="KursDetay" ColumnName="KursDetay" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="SertifikaURL" ColumnName="SertifikaURL" />
+                <ScalarProperty Name="Kurs" ColumnName="Kurs" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
               </MappingFragment>
@@ -262,11 +298,23 @@
           <EntitySetMapping Name="TblIletisim">
             <EntityTypeMapping TypeName="DbCvModel.TblIletisim">
               <MappingFragment StoreEntitySet="TblIletisim">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Tarih" ColumnName="Tarih" />
                 <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
                 <ScalarProperty Name="Konu" ColumnName="Konu" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSosyalMedya">
+            <EntityTypeMapping TypeName="DbCvModel.TblSosyalMedya">
+              <MappingFragment StoreEntitySet="TblSosyalMedya">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Ikon" ColumnName="Ikon" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
