@@ -7,52 +7,65 @@ using MvcCv.Models.Entity;
 
 namespace MvcCv.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         DbCvEntities db = new DbCvEntities();
 
+        // INDEX ~ HAKKIMDA 
         public ActionResult Index()
         {
             var degerler = db.TblHakkimda.ToList();
             return View(degerler);
         }
+        // SOSYAL MEDYA
+        public PartialViewResult SosyalMedya()
+        {
+            var sosyalmedya = db.TblSosyalMedya.ToList();
+            return PartialView(sosyalmedya);
+        }
+
         // DENEYIM
         public PartialViewResult Deneyim()
         {
             var deneyimler = db.TblDeneyimlerim.ToList();
             return PartialView(deneyimler);
         }
+
         // EGITIMLERIM
         public PartialViewResult Egitimlerim()
         {
             var egitimler = db.TblEgitimlerim.ToList();
             return PartialView(egitimler);
         }
+
         // YETENEKLERIM
         public PartialViewResult Yeteneklerim()
         {
             var yetenekler = db.TblYeteneklerim.ToList();
             return PartialView(yetenekler);
         }
+
         // HOBILERIM
         public PartialViewResult Hobilerim()
         {
             var hobiler = db.TblHobilerim.ToList();
             return PartialView(hobiler);
         }
+
         // SERTIFIKALARIM
         public PartialViewResult Sertifikalarim()
         {
             var sertifikalar = db.TblSertifikalarim.ToList();
             return PartialView(sertifikalar);
         }
+
         // ILETISIM
         [HttpGet]
         public PartialViewResult Iletisim()
         {
             return PartialView();
         }
-
         [HttpPost]
         public PartialViewResult Iletisim(TblIletisim iletisim)
         {

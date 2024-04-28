@@ -7,7 +7,6 @@
 <h3 style="text-align: center; font-weight: bold;">Deneyim Guncelleme Sayfasi</h3>
 <br />
 <form method="post">
-    @Html.HiddenFor(x => x.ID)
 
     @Html.Label("Baslik")
     @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
@@ -21,5 +20,5 @@
     @Html.Label("Aciklama")
     @Html.TextAreaFor(x => x.Aciklama, 5, 1, new { @class = "form-control" })
     <br />
-    <button class="btn btn-success">Guncelle</button>
+    <button class="btn btn-outline-success"><i class="fa fa-save"></i> Kaydet</button>
 </form>
