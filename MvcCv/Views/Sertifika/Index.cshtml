@@ -1,0 +1,50 @@
+﻿@model List<MvcCv.Models.Entity.TblSertifikalarim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<br />
+<h3 style="text-align: center; font-weight: bold;">Sertifikalar  Sayfasi</h3>
+
+<div class="tab-pane" id="timeline">
+    <div class="timeline timeline-inverse">
+        @foreach (var x in Model)
+        {
+            count++;
+            if (count % 2 == 1)
+
+            {
+                <div class="time-label">
+                    <span class="bg-dark">@x.Tarih</span>
+                </div>
+            }
+            else
+            {
+                <div class="time-label">
+                    <span class="bg-cyan">@x.Tarih</span>
+                </div>
+            }
+            <div>
+                <i class="fas fa-trophy bg-yellow"></i>
+                <div class="timeline-item">
+                    <h3 class="timeline-header">
+                        <a href="@x.SertifikaURL"> @x.Kurs</a>
+                        @x.KursDetay
+                    </h3>
+                    <div class="timeline-body">@x.Aciklama</div>
+                    <div class="timeline-footer">
+                        <div>
+                            <a href="/Sertifika/SertifikaGuncelle/@x.ID" class="btn btn-outline-info btn-sm"><i class="fas fa-pencil-alt"></i> Guncelle</a>
+                            <a href="/Sertifika/SertifikaSil/@x.ID" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a href="/Sertifika/SertifikaEkle/" class="btn btn-outline-success">
+        <i class="fas fa-plus"></i>
+        Yeni Sertifika Ekle
+    </a>
+</div>

@@ -1,0 +1,30 @@
+﻿﻿@model MvcCv.Models.Entity.TblSertifikalarim
+@{
+    ViewBag.Title = "SertifikaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h3 style="text-align: center; font-weight: bold;">Yeni Sertifika Ekleme Sayfasi</h3>
+<br />
+
+<form method="post">
+
+    @Html.Label("Kurs Yeri")
+    @Html.TextBoxFor(x => x.Kurs, new { @class = "form-control", placeholder = "Kurs Yeri giriniz" })
+    <br />
+    @Html.Label("Kurs Detay")
+    @Html.TextBoxFor(x => x.KursDetay, new { @class = "form-control", placeholder = "Kurs Detay bilgisi giriniz" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", placeholder = "Sertifika Tarihi giriniz" })
+    <br />
+    @Html.Label("Sertifika URL")
+    @Html.TextBoxFor(x => x.SertifikaURL, new { @class = "form-control", placeholder = "Sertifika linki giriniz" })
+    <br />
+    @Html.Label("Aciklama")
+    @Html.TextAreaFor(x => x.Aciklama, 5, 1, new { @class = "form-control", placeholder = "Aciklama giriniz" })
+    <br />
+
+    <button class="btn btn-outline-success"><i class="fas fa-save"></i> Kaydet</button>
+
+</form>
