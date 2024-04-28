@@ -11,6 +11,7 @@ namespace MvcCv.Controllers
     public class EgitimController : Controller
     {
         GenericRepository<TblEgitimlerim> repo = new GenericRepository<TblEgitimlerim>();
+
         public ActionResult Index()
         {
             var education = repo.List();
