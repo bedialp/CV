@@ -1,5 +1,8 @@
 ﻿@model List<MvcCv.Models.Entity.TblYeteneklerim>
-
+@{ 
+    string renk = "";
+    string labelrenk = "";
+}
 
 <div class="resume-section-content">
     <h2 class="mb-5">Yeteneklerim</h2>
@@ -18,13 +21,40 @@
         <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
         <li class="list-inline-item"><i class="fab fa-npm"></i></li>
     </ul>
-    <div class="subheading mb-3">Is Akisi</div>
-    <ul class="fa-ul mb-0">
-        @foreach (var x in Model)
+    <div class="subheading mb-3">Yetenekler</div>
+    <ul class="fa-ul mb-0 col-6">
+        @foreach (var item in Model)
         {
-            <li>
-                <span class="fa-li"><i class="fas fa-check"></i></span>
-                @x.Yetenek
+            if (item.Oran >= 0 && item.Oran <= 25)
+            {
+                renk = "progress-bar bg-danger";
+                labelrenk = "#dc3545";
+            }
+            if (item.Oran >= 26 && item.Oran <= 50)
+            {
+                renk = "progress-bar bg-warning";
+                labelrenk = "#ffc107";
+            }
+            if (item.Oran >= 51 && item.Oran <= 75)
+            {
+                renk = "progress-bar bg-info";
+                labelrenk = "#17a2b8";
+            }
+            if (item.Oran >= 76 && item.Oran <= 100)
+            {
+                renk = "progress-bar bg-success";
+                labelrenk = "#28a745";
+            }
+
+            <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-check"  style="color:@labelrenk "></i></span>
+                <div class="mb-1">
+                    @item.Yetenek
+                    <small style="float:inline-end;"><b>@item.Oran%</b></small>
+                </div>
+                <div class="progress">
+                    <div class="@renk" style="width:@item.Oran%"></div>
+                </div>
             </li>
         }
     </ul>
