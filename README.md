@@ -1,7 +1,16 @@
+[fevzialpkutuk](https://fevzialpkutuk.com.tr/)
 
+##Kullanılan Teknolojiler:
+  - Asp.Net Core 
+  - Entity Framework
+  - DbFirst
+  - Repository Design Patern
+  - MSSQL
 
-https://github.com/bedialp/CV/assets/56656000/1ee101ec-6293-4ddf-9c66-be8233340a6d
-
-
-
-https://fevzialpkutuk.com.tr/ 
+##Öne Çıkan Özellikler;
+  -  Login-Out 
+  -  Proje Seviyesinde Authorize
+  -  Validation Kontrolleri
+  -  LINQ Sorguları
+  -  CRUD İşlemleri
+  -  Koşullu renklendirme işlemleri
