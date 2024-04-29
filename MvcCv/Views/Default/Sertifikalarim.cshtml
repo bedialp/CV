@@ -1,14 +1,16 @@
 ﻿@model List<MvcCv.Models.Entity.TblSertifikalarim>
 
 <div class="resume-section-content">
-    <h2 class="mb-5">Oduller & Sertifikalar</h2>
-    <ul class="fa-ul mb-0">
-        @foreach (var x in Model)
-        {
-            <li>
-                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                @x.Aciklama
-            </li>
-        }
-    </ul>
+    <h2 class="mb-5">Kurslar & Sertifikalar</h2>
+    @foreach (var x in Model)
+    {
+        <i class="fas fa-trophy" style="color: gold;"></i>
+        <b class="timeline-header">
+            <a href="@x.SertifikaURL"> @x.Kurs</a>
+            @x.KursDetay
+        </b>
+        <div class="timeline-body">@x.Aciklama</div>
+        <br />
+    }
 </div>
+
