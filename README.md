@@ -1,13 +1,15 @@
-[fevzialpkutuk](https://fevzialpkutuk.com.tr/)
 
-##Kullanılan Teknolojiler:
-  - Asp.Net Core 
+[CV Projesi Link](https://fevzialpkutuk.com.tr/, "Siteye Gitmek icin Tiklayiniz")
+---
+
+## Kullanılan Teknolojiler:
+  - Asp.Net Core
+  - MVC 5
   - Entity Framework
   - DbFirst
   - Repository Design Patern
-  - MSSQL
-
-##Öne Çıkan Özellikler;
+  - SQL Server
+## Öne Çıkan Özellikler;
   -  Login-Out 
   -  Proje Seviyesinde Authorize
   -  Validation Kontrolleri
